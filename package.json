@@ -1,0 +1,39 @@
+{
+  "name": "zoe-delivery",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "clean": "rm dist/bundle.js",
+    "build-dev": "webpack -d --mode development",
+    "build-prod": "webpack -p --mode production",
+    "start": "webpack-dev-server --hot --mode development"
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-hot-loader": "^4.12.20"
+  },
+  "devDependencies": {
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.7",
+    "webpack-dev-server": "^3.10.3",
+    "css-loader": "^3.5.3",
+    "style-loader": "^1.2.0",
+    "html-webpack-plugin": "^4.1.0",
+    "typescript": "^3.8.3",
+    "awesome-typescript-loader": "^5.2.1",
+    "@hot-loader/react-dom": "^16.13.0+4.12.20",
+    "postcss-loader": "^3.0.0",
+    "autoprefixer": "^9.7.6",
+    "url-loader": "^4.1.0",
+    "prettier": "^2.0.5",
+    "mini-css-extract-plugin": "^0.9.0",
+    "webpack-bundle-analyzer": "^3.7.0"
+  }
+}
