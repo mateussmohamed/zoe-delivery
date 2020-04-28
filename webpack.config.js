@@ -8,7 +8,8 @@ const config = {
   entry: ['react-hot-loader/patch', './src/index.tsx'],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[contenthash].js'
+    filename: '[name].[contenthash].js',
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -52,7 +53,9 @@ const config = {
     }
   },
   devServer: {
-    contentBase: path.join(__dirname, 'dist')
+    contentBase: path.join(__dirname, 'dist'),
+    publicPath: '/',
+    historyApiFallback: true
   },
   plugins: [
     new HtmlWebpackPlugin({
