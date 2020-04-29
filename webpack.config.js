@@ -1,8 +1,6 @@
 /* eslint-disable */
-
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 const config = {
@@ -18,21 +16,6 @@ const config = {
         test: /\.ts(x)?$/,
         use: ['awesome-typescript-loader'],
         exclude: /node_modules/
-      },
-      {
-        test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-              modules: true
-            }
-          },
-          'postcss-loader'
-        ],
-        include: /\.module\.css$/
       },
       {
         test: /\.png$/,
@@ -62,7 +45,6 @@ const config = {
     new HtmlWebpackPlugin({
       template: './src/index.html'
     }),
-    new MiniCssExtractPlugin(),
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
       openAnalyzer: false
