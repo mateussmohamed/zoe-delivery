@@ -11,15 +11,12 @@ type RouteParams = {
 type IProps = {} & RouteComponentProps<RouteParams>
 
 const Products: FC<IProps> = ({ history, match }) => {
+  const handleBack = (): void => (match.params.categoryId ? history.replace('/products') : history.goBack())
+
   return (
     <div>
       <h1>Products</h1>
-      <button
-        onClick={() => {
-          return match.params.categoryId ? history.replace('/products') : history.goBack()
-        }}>
-        voltar
-      </button>
+      <button onClick={handleBack}>voltar</button>
       <br />
       <br />
       <Categories selectedCategory={match.params.categoryId} />

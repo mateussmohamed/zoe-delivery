@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { FC } from 'react'
 
-const CustomerAddress = () => {
+const CustomerAddress: FC = () => {
   return <input type="search" />
 }
 

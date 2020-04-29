@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
@@ -6,7 +6,7 @@ import Home from '../modules/home/pages/Home'
 import Products from '../modules/products/pages/Products'
 import ProductDetail from '../modules/product/pages/ProductDetail'
 
-const Routes = () => {
+const Routes: FC = () => {
   return (
     <BrowserRouter>
       <Switch>

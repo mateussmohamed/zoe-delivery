@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { FC } from 'react'
 
 type IProps = {
   id: string
   name: string
 }
 
-const ProductDetail: React.FC<IProps> = ({ id, name }) => {
+const ProductDetail: FC<IProps> = ({ id, name }) => {
   return (
     <div>
       <h1>{name}</h1>

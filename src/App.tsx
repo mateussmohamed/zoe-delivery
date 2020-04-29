@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { hot } from 'react-hot-loader/root'
 
 import Routes from './Routes'
 
-const App = () => {
+const App: FC = () => {
   return <Routes />
 }
 
