@@ -1,16 +1,21 @@
 import React, { FC } from 'react'
 import { hot } from 'react-hot-loader/root'
 import { ApolloProvider } from '@apollo/react-hooks'
+import { ThemeProvider } from 'styled-components'
 
 import client from './apollo/client'
-
-import Routes from './Routes'
+import Routes from './routes'
+import GlobalStyle from './styles/global'
+import theme from './styles/themes/default'
 
 const App: FC = () => {
   return (
-    <ApolloProvider client={client}>
-      <Routes />
-    </ApolloProvider>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <ApolloProvider client={client}>
+        <Routes />
+      </ApolloProvider>
+    </ThemeProvider>
   )
 }
 

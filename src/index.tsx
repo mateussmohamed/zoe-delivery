@@ -3,8 +3,6 @@ import * as ReactDOM from 'react-dom'
 
 import App from './App'
 
-import './styles.module.css'
-
 const mountNode = document.getElementById('app')
 
 ReactDOM.render(<App />, mountNode)
