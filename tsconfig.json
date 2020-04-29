@@ -5,12 +5,21 @@
     "strict": true,
     "noImplicitReturns": true,
     "noImplicitAny": true,
-    "module": "es6",
+    "module": "esnext",
     "moduleResolution": "node",
     "target": "es5",
     "allowJs": true,
+    "skipLibCheck": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "jsx": "react"
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react",
+    "types": []
   },
-  "include": ["./src/**/*"]
+  "include": ["src"],
+  "files": ["src/styles/styled.d.ts"]
 }
