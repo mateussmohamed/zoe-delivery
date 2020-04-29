@@ -1,27 +1,24 @@
 import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
 
+type Category = {
+  title: string
+  id: string
+}
 type IProps = {
+  data: Category[] | undefined
   selectedCategory?: string | null
 }
 
-type Category = {
-  id: string
-  name: string
-}
+const Categories: FC<IProps> = ({ data, selectedCategory }) => {
+  if (!data) return null
 
-const CATEGORIES: Category[] = [
-  { id: '94', name: 'Cervejas' },
-  { id: '92', name: 'Vinhos' }
-]
-
-const Categories: FC<IProps> = ({ selectedCategory }) => {
   return (
     <ul>
-      {CATEGORIES.map((cat) => (
+      {data.map((cat) => (
         <li key={cat.id}>
           <Link to={`/products/category/${cat.id}`}>
-            {selectedCategory === cat.id ? `${cat.name} - selected` : cat.name}
+            {selectedCategory === cat.id ? `${cat.title} - selected` : cat.title}
           </Link>
         </li>
       ))}
