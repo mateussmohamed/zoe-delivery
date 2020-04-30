@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
+    "outDir": "./dist",
+    "baseUrl": ".",
     "sourceMap": true,
     "strict": true,
     "noImplicitReturns": true,
@@ -18,8 +19,12 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
-    "types": []
+    "types": ["jest"],
+    "paths": {
+      "~/*": ["src/*"],
+      "test-utils": ["./utils/test-utils"]
+    }
   },
-  "include": ["src"],
-  "files": ["src/styles/styled.d.ts"]
+  "include": ["src", "__tests__/App.test.tsx"],
+  "files": ["src/styles/styled.d.ts", "src/global.d.ts"]
 }
