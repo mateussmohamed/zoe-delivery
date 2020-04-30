@@ -12,7 +12,7 @@
 // }
 
 import {} from 'styled-components'
-import theme from './themes/default'
+import theme from '../styles/themes/default'
 
 declare module 'styled-components' {
   type Theme = typeof theme

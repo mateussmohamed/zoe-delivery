@@ -2,7 +2,7 @@ export default {
   title: 'light',
 
   colors: {
-    background: '#ffffff',
-    header: '#333'
+    background: 'rgba(108, 99, 255, 0.1)',
+    header: '#434053'
   }
 }

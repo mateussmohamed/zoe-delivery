@@ -18,6 +18,10 @@ const config = {
         exclude: /node_modules/
       },
       {
+        test: /\.svg$/,
+        use: 'file-loader'
+      },
+      {
         test: /\.png$/,
         use: [
           {
@@ -31,7 +35,7 @@ const config = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.tsx', '.ts'],
+    extensions: ['.js', '.jsx', '.tsx', '.ts', '.svg'],
     alias: {
       'react-dom': '@hot-loader/react-dom'
     }

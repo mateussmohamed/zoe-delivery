@@ -6,6 +6,7 @@ export default createGlobalStyle`
   ${normalize()}
 
   body{
+    font-family: 'Nunito', sans-serif;
     background-color: ${(props): string => props.theme.colors.background}
   }
   `

@@ -14,7 +14,11 @@ module.exports = {
 
   moduleFileExtensions: ['ts', 'tsx', 'js'],
 
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' }),
+  moduleNameMapper: {
+    '^~/(.*)$': '<rootDir>/src/$1',
+    'test-utils': '<rootDir>/utils/test-utils',
+    '\\.(jpg|jpeg|png|gif|svg)$': '<rootDir>/__mocks__/fileMock.js'
+  },
 
   bail: 1,
 
