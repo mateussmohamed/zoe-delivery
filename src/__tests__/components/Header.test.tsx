@@ -12,8 +12,8 @@ describe('<Header />', () => {
 
     const header = getByTestId('zoe-header')
     const image = getByTestId('zoe-logo')
-    const title = getByTestId('zoe-title')
-    const subTitle = getByTestId('zoe-subtitle')
+    const title = getByTestId('zoe-logo-title')
+    const subTitle = getByTestId('zoe-logo-subtitle')
 
     expect(header).toBeDefined()
     expect(image).toBeDefined()

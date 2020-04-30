@@ -1,18 +1,16 @@
 import React, { FC } from 'react'
 
-import { Container, Inner, LogoBox, LogoImage, LogoTitle, LogoSubtitle } from './styles'
+import Logo from '../Logo'
+import Logotype from '../Logotype'
 
-import zoeLogo from '../../assets/zoe-logo.svg'
+import { Container, Inner } from './styles'
 
 const Header: FC = () => {
   return (
     <Container>
       <Inner>
-        <LogoImage src={zoeLogo} />
-        <LogoBox>
-          <LogoTitle>Zoe</LogoTitle>
-          <LogoSubtitle>Delivery</LogoSubtitle>
-        </LogoBox>
+        <Logo />
+        <Logotype />
       </Inner>
     </Container>
   )
