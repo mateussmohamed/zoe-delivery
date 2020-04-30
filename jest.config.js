@@ -24,7 +24,7 @@ module.exports = {
 
   collectCoverage: true,
 
-  collectCoverageFrom: ['src/**/*', '!src/styles/**', '!src/__tests__/**', '!**/*.d.ts'],
+  collectCoverageFrom: ['src/**/*', '!src/styles/**', '!src/**/styles.ts', '!src/__tests__/**', '!src/@/types'],
 
   coverageDirectory: 'coverage',
 
