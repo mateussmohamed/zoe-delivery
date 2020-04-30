@@ -2,17 +2,16 @@ import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
 
 import Header from '../../../components/Header'
-
-import CustomerAddress from '../components/CustomerAddress'
+import Footer from '../../../components/Footer'
 
 const Home: FC = () => {
   return (
     <div>
       <Header />
-      <h1>Home</h1>
-      <CustomerAddress />
 
       <Link to="/products">Products</Link>
+
+      <Footer />
     </div>
   )
 }
