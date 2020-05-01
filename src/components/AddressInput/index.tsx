@@ -1,16 +1,14 @@
-import React, { FC } from 'react'
+import React, { FC, InputHTMLAttributes } from 'react'
 
 import { Container, Input, Icon } from './styles'
 
-type TProps = {
-  placeholder: string
-}
+type TProps = {} & InputHTMLAttributes<HTMLInputElement>
 
-const AddressInput: FC<TProps> = ({ placeholder }) => {
+const AddressInput: FC<TProps> = ({ placeholder, onChange, value, disabled }) => {
   return (
     <Container>
       <Icon />
-      <Input placeholder={placeholder} />
+      <Input placeholder={placeholder} onChange={onChange} value={value} disabled={disabled} />
     </Container>
   )
 }
