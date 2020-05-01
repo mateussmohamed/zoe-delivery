@@ -35,7 +35,8 @@
     "react-dom": "^16.13.1",
     "react-hot-loader": "^4.12.20",
     "react-router-dom": "^5.1.2",
-    "styled-components": "^5.1.0"
+    "styled-components": "^5.1.0",
+    "use-places-autocomplete": "^1.2.3"
   },
   "devDependencies": {
     "@hot-loader/react-dom": "^16.13.0+4.12.20",

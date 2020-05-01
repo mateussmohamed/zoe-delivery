@@ -5166,6 +5166,11 @@ locate-path@^5.0.0:
   dependencies:
     p-locate "^4.1.0"
 
+lodash.debounce@^4.0.8:
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
+  integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
+
 lodash.memoize@4.x:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
@@ -7977,6 +7982,13 @@ url@^0.11.0:
   dependencies:
     punycode "1.3.2"
     querystring "0.2.0"
+
+use-places-autocomplete@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/use-places-autocomplete/-/use-places-autocomplete-1.2.3.tgz#424c97d6a5f7d378c0153eea3800059d89502bc3"
+  integrity sha512-SY+KFB54zK59QQxfkwuMBltgYKxE5iEb+K6vS6DWtL8xcxBrWyRf6ZpbcG+8ilH6bl6AzPs5KKM56voQen3RCw==
+  dependencies:
+    lodash.debounce "^4.0.8"
 
 use@^3.1.0:
   version "3.1.1"
