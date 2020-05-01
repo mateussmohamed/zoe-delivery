@@ -1,14 +1,29 @@
 import React from 'react'
 import { Router } from 'react-router-dom'
 import { createMemoryHistory } from 'history'
+import * as usePlacesAutocomplete from 'use-places-autocomplete'
 
 import { render } from 'test-utils'
 
 import Home from '~/modules/home/pages/Home'
 
-jest.mock('../../assets/zoe-logo.svg')
+jest.mock('use-places-autocomplete')
+
+const mockedUsePlacesAutcomplete = usePlacesAutocomplete as jest.Mocked<typeof usePlacesAutocomplete>
 
 const history = createMemoryHistory()
+
+mockedUsePlacesAutcomplete.default.mockReturnValue({
+  ready: false,
+  value: '',
+  suggestions: {
+    loading: false,
+    status: '',
+    data: []
+  },
+  setValue: jest.fn(),
+  clearSuggestions: jest.fn()
+})
 
 describe('<Home />', () => {
   test('renders correctly', async () => {
