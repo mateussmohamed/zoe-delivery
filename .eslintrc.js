@@ -20,6 +20,8 @@ module.exports = {
   ],
   rules: {
     // e.g. "@typescript-eslint/explicit-function-return-type": "off",
-    'react/prop-types': 'off'
+    'react/prop-types': 'off',
+    '@typescript-eslint/ban-ts-ignore': 'off',
+    '@typescript-eslint/camelcase': 'off'
   }
 }
