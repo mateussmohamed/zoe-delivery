@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-// import { borderRadius } from 'polished'
 
 import pinIcon from '../../assets/pin-icon.svg'
 
@@ -7,6 +6,7 @@ export const Container = styled.div.attrs(() => ({
   'data-testid': 'zoe-input-container'
 }))`
   position: relative;
+  z-index: 2;
 `
 
 export const Input = styled.input.attrs(() => ({
