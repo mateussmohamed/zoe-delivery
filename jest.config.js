@@ -10,6 +10,8 @@ module.exports = {
 
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$',
 
+  testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/src/__tests__/__mocks__'],
+
   setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
 
   moduleFileExtensions: ['ts', 'tsx', 'js'],
@@ -17,7 +19,7 @@ module.exports = {
   moduleNameMapper: {
     '^~/(.*)$': '<rootDir>/src/$1',
     'test-utils': '<rootDir>/utils/test-utils',
-    '\\.(jpg|jpeg|png|gif|svg)$': '<rootDir>/__mocks__/fileMock.js'
+    '\\.(jpg|jpeg|png|gif|svg)$': '<rootDir>/__mocks__/fileMock.ts'
   },
 
   bail: 1,
