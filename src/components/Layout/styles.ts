@@ -10,8 +10,5 @@ export const Container = styled.div.attrs(() => ({
 export const Middle = styled.section.attrs(() => ({
   'data-testid': 'zoe-layout-middle'
 }))`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
   min-height: calc(100vh - 160px);
 `
