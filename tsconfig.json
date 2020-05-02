@@ -25,5 +25,6 @@
       "test-utils": ["utils/test-utils"]
     }
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["src/__tests__"]
 }
