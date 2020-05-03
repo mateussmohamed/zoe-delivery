@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import { Link } from 'react-router-dom'
 
 import Logo from '../Logo'
 import Logotype from '../Logotype'
@@ -9,7 +10,9 @@ const Header: FC = () => {
   return (
     <Container>
       <Inner>
-        <Logo />
+        <Link to="/">
+          <Logo />
+        </Link>
         <Logotype />
       </Inner>
     </Container>
