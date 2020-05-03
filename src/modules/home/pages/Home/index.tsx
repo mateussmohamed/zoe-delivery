@@ -34,17 +34,18 @@ const Home: FC = () => {
   const unavailableService = data?.pocSearch.length === 0
 
   return (
-    <Layout>
-      <Container>
-        <CustomerAddress onSelectAddress={onSelectAddress} />
+    <>
+      <Layout>
+        <Container>
+          <CustomerAddress onSelectAddress={onSelectAddress} />
 
-        {availableService && <Button onClick={handleSearchProducts}>Buscar Produtos</Button>}
+          {availableService && <Button onClick={handleSearchProducts}>Buscar Produtos</Button>}
 
-        {unavailableService && <UnavailableService />}
-
-        {loading && <Loading />}
-      </Container>
-    </Layout>
+          {unavailableService && <UnavailableService />}
+        </Container>
+      </Layout>
+      {loading && <Loading />}
+    </>
   )
 }
 
