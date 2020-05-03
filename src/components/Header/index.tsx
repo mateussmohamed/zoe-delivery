@@ -1,9 +1,19 @@
 import React, { FC } from 'react'
 
-import { Container } from './styles'
+import Logo from '../Logo'
+import Logotype from '../Logotype'
+
+import { Container, Inner } from './styles'
 
 const Header: FC = () => {
-  return <Container />
+  return (
+    <Container>
+      <Inner>
+        <Logo />
+        <Logotype />
+      </Inner>
+    </Container>
+  )
 }
 
 export default Header

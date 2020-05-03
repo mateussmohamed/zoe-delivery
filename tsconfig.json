@@ -22,9 +22,8 @@
     "types": ["jest"],
     "paths": {
       "~/*": ["src/*"],
-      "test-utils": ["./utils/test-utils"]
+      "test-utils": ["utils/test-utils"]
     }
   },
-  "include": ["src", "__tests__/App.test.tsx"],
-  "files": ["src/styles/styled.d.ts", "src/global.d.ts"]
+  "include": ["src"]
 }

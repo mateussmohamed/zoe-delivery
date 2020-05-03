@@ -1,9 +1,18 @@
 import styled from 'styled-components'
+import { size } from 'polished'
 
-export const Container = styled.div.attrs((attrs) => ({
-  'data-testid': 'header'
+export const Container = styled.header.attrs(() => ({
+  'data-testid': 'zoe-header'
 }))`
-  height: 65px;
+  ${size(80, '100%')};
   background: ${(props): string => props.theme.colors.header};
-  padding: 0 30px;
+  display: flex;
+  justify-content: center;
+`
+
+export const Inner = styled.div.attrs(() => ({}))`
+  max-width: 1440px;
+  display: flex;
+  flex: 1;
+  align-items: center;
 `

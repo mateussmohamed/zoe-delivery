@@ -2,8 +2,10 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
 const config = {
+  devtool: 'inline-source-map',
   entry: ['react-hot-loader/patch', './src/index.tsx'],
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -13,9 +15,20 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.ts(x)?$/,
-        use: ['awesome-typescript-loader'],
-        exclude: /node_modules/
+        test: /\.tsx?$/,
+        exclude: /node_modules\/(?!__tests__\/).*/,
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              transpileOnly: true
+            }
+          }
+        ]
+      },
+      {
+        test: /\.svg$/,
+        use: 'file-loader'
       },
       {
         test: /\.png$/,
@@ -31,10 +44,14 @@ const config = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.tsx', '.ts'],
+    extensions: ['.js', '.jsx', '.tsx', '.ts', '.svg'],
     alias: {
       'react-dom': '@hot-loader/react-dom'
-    }
+    },
+    plugins: [
+      // @ts-ignore
+      new TsconfigPathsPlugin()
+    ]
   },
   devServer: {
     contentBase: path.join(__dirname, 'dist'),

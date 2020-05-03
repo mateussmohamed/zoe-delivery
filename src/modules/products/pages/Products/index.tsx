@@ -2,9 +2,10 @@ import React, { FC } from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 import { useQuery } from '@apollo/react-hooks'
 
+import Layout from '~/components/Layout'
+
 import ProductList from '../../components/ProductList'
 import Categories from '../../components/Categories'
-
 import ALL_CATEGORIES_SEARCH from '../../graphql/allCategoriesSearch'
 
 type RouteParams = {
@@ -31,7 +32,7 @@ const Products: FC<IProps> = ({ history, match }) => {
   if (error) return <p>Error :(</p>
 
   return (
-    <div>
+    <Layout>
       <h1>Products</h1>
       <button onClick={handleBack}>voltar</button>
       <br />
@@ -40,7 +41,7 @@ const Products: FC<IProps> = ({ history, match }) => {
       <br />
       <br />
       <ProductList selectedCategory={match.params.categoryId} />
-    </div>
+    </Layout>
   )
 }
 
