@@ -41,39 +41,3 @@ export const Spinner = styled.div`
     height: 3rem;
   }
 `
-
-// export const Spinner = styled.div`
-//   width: 2rem;
-//   height: 2rem;
-//   border-radius: 50%;
-//   background: linear-gradient(to right, #955c7b 10%, rgba(128, 52, 254, 0) 42%);
-//   position: relative;
-
-//   animation: ${load} 900ms infinite linear;
-//   transform: translateZ(0);
-
-//   &:before {
-//     width: 50%;
-//     height: 50%;
-//     background: #955c7b;
-//     border-radius: 100% 0 0 0;
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     content: '';
-//   }
-
-//   &:after {
-//     background: rgba(66, 64, 83, 0.5);
-//     width: 75%;
-//     height: 75%;
-//     border-radius: 50%;
-//     content: '';
-//     margin: auto;
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     bottom: 0;
-//     right: 0;
-//   }
-// `
