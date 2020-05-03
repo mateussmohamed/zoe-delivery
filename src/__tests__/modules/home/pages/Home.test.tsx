@@ -2,7 +2,6 @@ import React from 'react'
 import * as usePlacesAutocomplete from 'use-places-autocomplete'
 import { ApolloProvider } from '@apollo/react-hooks'
 import { createMockClient, MockApolloClient } from 'mock-apollo-client'
-
 import { render, fireEvent, waitFor } from 'test-utils'
 
 import Home from '~/modules/home/pages/Home'
@@ -12,6 +11,12 @@ import typeResult from '~/__tests__/__mocks__/typeResult'
 import geoCodeResult from '~/__tests__/__mocks__/geoCodeResult'
 
 jest.mock('use-places-autocomplete')
+const pushMock = jest.fn()
+jest.mock('react-router-dom', () => ({
+  useHistory: () => ({
+    push: pushMock
+  })
+}))
 
 const mockedUsePlacesAutcomplete = usePlacesAutocomplete as jest.Mocked<typeof usePlacesAutocomplete>
 const clearSuggestionsMock = jest.fn()
@@ -78,10 +83,11 @@ describe('<Home />', () => {
 
         fireEvent.click(suggestions[0])
 
-        await waitFor(async () => {
-          const button = await findByTestId('zoe-button-search-products')
+        const button = await findByTestId('zoe-button-search-products')
 
-          expect(button).toBeTruthy()
+        fireEvent.click(button)
+
+        await waitFor(async () => {
           expect(pocSearchHandler).toBeCalledTimes(1)
           expect(pocSearchHandler).toBeCalledWith({
             lat: '-23.5454401',
@@ -89,6 +95,10 @@ describe('<Home />', () => {
             algorithm: 'NEAREST',
             now: '2020-05-02T22:27:44.795Z'
           })
+
+          expect(button).toBeTruthy()
+          expect(pushMock).toBeCalled()
+          expect(pushMock).toBeCalledWith('/products')
         })
       })
     })
