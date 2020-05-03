@@ -15,7 +15,7 @@ const config = {
       {
         test: /\.ts(x)?$/,
         use: ['awesome-typescript-loader'],
-        exclude: /node_modules/
+        exclude: /node_modules\/(?!__tests__\/).*/
       },
       {
         test: /\.svg$/,
