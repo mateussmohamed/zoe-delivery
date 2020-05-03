@@ -1,47 +1,59 @@
 import React, { FC } from 'react'
-import { RouteComponentProps } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useQuery } from '@apollo/react-hooks'
 
 import Layout from '~/components/Layout'
+import Loading from '~/components/Loading'
 
 import ProductList from '../../components/ProductList'
 import Categories from '../../components/Categories'
-import ALL_CATEGORIES_SEARCH from '../../graphql/allCategoriesSearch'
+
+import ALL_CATEGORIES_QUERY from '../../graphql/allCategories'
+import POC_PRODUCTS_QUERY from '../../graphql/pocProducts'
+
+import { Container } from './styles'
+import { Product, Category } from '~/@types'
 
 type RouteParams = {
   categoryId?: string
 }
 
-type IProps = {} & RouteComponentProps<RouteParams>
-
-type Category = {
-  title: string
-  id: string
-}
-
 type CategoriesData = {
-  allCategory: Category[]
+  allCategory: Category[] | undefined
 }
 
-const Products: FC<IProps> = ({ history, match }) => {
-  const { loading, error, data: categories } = useQuery<CategoriesData>(ALL_CATEGORIES_SEARCH)
+type PocData = {
+  id: string
+  products: Product[] | undefined
+}
 
-  const handleBack = (): void => (match.params.categoryId ? history.replace('/products') : history.goBack())
+type ProductsData = {
+  poc: PocData
+}
 
-  if (loading) return <p>Loading...</p>
-  if (error) return <p>Error :(</p>
+const Products: FC = () => {
+  const { categoryId } = useParams<RouteParams>()
+  const { loading: loadingCategories, data: dataCategories } = useQuery<CategoriesData>(ALL_CATEGORIES_QUERY)
+  const { loading: loadingProducts, data: dataProducts } = useQuery<ProductsData>(POC_PRODUCTS_QUERY, {
+    variables: {
+      id: '532',
+      search: '',
+      categoryId: categoryId
+    }
+  })
 
   return (
-    <Layout>
-      <h1>Products</h1>
-      <button onClick={handleBack}>voltar</button>
-      <br />
-      <br />
-      <Categories data={categories?.allCategory} selectedCategory={match.params.categoryId} />
-      <br />
-      <br />
-      <ProductList selectedCategory={match.params.categoryId} />
-    </Layout>
+    <>
+      <Layout>
+        <Container>
+          <Categories categories={dataCategories?.allCategory} selectedCategory={categoryId} />
+
+          <ProductList products={dataProducts?.poc.products} />
+        </Container>
+      </Layout>
+
+      {(loadingCategories || loadingProducts) && <Loading />}
+    </>
   )
 }
 

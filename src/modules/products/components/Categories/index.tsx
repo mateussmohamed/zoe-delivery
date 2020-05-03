@@ -1,29 +1,49 @@
 import React, { FC } from 'react'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
-type Category = {
-  title: string
-  id: string
-}
-type IProps = {
-  data: Category[] | undefined
+import { Category } from '~/@types'
+
+import { Container, Button } from './styles'
+
+type TProps = {
+  categories: Category[] | undefined
   selectedCategory?: string | null
 }
 
-const Categories: FC<IProps> = ({ data, selectedCategory }) => {
-  if (!data) return null
+const Categories: FC<TProps> = ({ categories, selectedCategory }) => {
+  const history = useHistory()
+
+  const handleSelectCategory = (id: string) => (): void => {
+    history.push(`/products/category/${id}`)
+  }
+
+  const handleClearFilters = () => (): void => {
+    history.push('/products')
+  }
+
+  if (!categories) return null
 
   return (
-    <ul>
-      {data.map((cat) => (
-        <li key={cat.id}>
-          <Link to={`/products/category/${cat.id}`}>
-            {selectedCategory === cat.id ? `${cat.title} - selected` : cat.title}
-          </Link>
-        </li>
+    <Container data-testid="zoe-categories">
+      <Button
+        data-testid="zoe-categories-item-btn"
+        onClick={handleClearFilters()}
+        isActive={history.location.pathname === '/products'}
+      >
+        Todos
+      </Button>
+      {categories.map((cat) => (
+        <Button
+          key={cat.id}
+          data-testid="zoe-categories-item-btn"
+          onClick={handleSelectCategory(cat.id)}
+          isActive={selectedCategory === cat.id}
+        >
+          {cat.title}
+        </Button>
       ))}
-    </ul>
+    </Container>
   )
 }
 
-export default Categories
+export default React.memo(Categories)
