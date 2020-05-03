@@ -2,10 +2,10 @@ import React, { FC } from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 import { useQuery } from '@apollo/react-hooks'
 
+import Layout from '~/components/Layout'
+
 import ProductList from '../../components/ProductList'
 import Categories from '../../components/Categories'
-import Layout from '../../../../components/Layout'
-
 import ALL_CATEGORIES_SEARCH from '../../graphql/allCategoriesSearch'
 
 type RouteParams = {

@@ -5,8 +5,8 @@ import { render, fireEvent, waitFor } from 'test-utils'
 
 import CustomerAddress from '~/modules/home/components/CustomerAddress'
 
-import typeResult from '../../../__mocks__/typeResult'
-import geoCodeResult from '../../../__mocks__/geoCodeResult'
+import typeResult from '~/__tests__/__mocks__/typeResult'
+import geoCodeResult from '~/__tests__/__mocks__/geoCodeResult'
 
 jest.mock('use-places-autocomplete')
 

@@ -2,7 +2,7 @@ import React, { useRef, FC } from 'react'
 
 import usePlacesAutocomplete, { getGeocode, getLatLng, Suggestion } from 'use-places-autocomplete'
 
-import AddressInput from '../../../../components/AddressInput'
+import AddressInput from '~/components/AddressInput'
 
 import { Container, List, Item, MainText, SecondaryText } from './styles'
 
