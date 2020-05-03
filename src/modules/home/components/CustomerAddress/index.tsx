@@ -6,11 +6,15 @@ import AddressInput from '../../../../components/AddressInput'
 
 import { Container, List, Item, MainText, SecondaryText } from './styles'
 
-const CustomerAddress: FC = () => {
+type TProps = {
+  onSelectAddress: (lat: number, lng: number) => void
+}
+
+const CustomerAddress: FC<TProps> = ({ onSelectAddress }) => {
   const {
     ready,
     value,
-    suggestions: { status, data, loading },
+    suggestions: { status, data },
     setValue,
     clearSuggestions
   } = usePlacesAutocomplete({
@@ -18,7 +22,7 @@ const CustomerAddress: FC = () => {
     debounce: 500
   })
 
-  const ref = useRef<HTMLUListElement | null>(null)
+  const ref = useRef<HTMLDivElement | null>(null)
 
   const handleInput = (e: React.SyntheticEvent<HTMLInputElement>): void => {
     setValue(e.currentTarget.value)
@@ -31,6 +35,8 @@ const CustomerAddress: FC = () => {
     try {
       const results = await getGeocode({ address: description })
       const coordinates = await getLatLng(results[0])
+
+      onSelectAddress(coordinates.lat, coordinates.lng)
     } catch (error) {}
   }
 
@@ -49,8 +55,6 @@ const CustomerAddress: FC = () => {
       )
     })
   }
-
-  console.log({ ready, loading, status })
 
   return (
     <Container ref={ref}>

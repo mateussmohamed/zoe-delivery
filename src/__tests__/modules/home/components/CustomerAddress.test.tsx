@@ -1,5 +1,4 @@
 import React from 'react'
-
 import * as usePlacesAutocomplete from 'use-places-autocomplete'
 
 import { render, fireEvent, waitFor } from 'test-utils'
@@ -12,6 +11,8 @@ import geoCodeResult from '../../../__mocks__/geoCodeResult'
 jest.mock('use-places-autocomplete')
 
 const mockedUsePlacesAutcomplete = usePlacesAutocomplete as jest.Mocked<typeof usePlacesAutocomplete>
+
+const onSelectAddressMock = jest.fn()
 
 describe('<CustomerAddress />', () => {
   test('renders correctly', async () => {
@@ -27,7 +28,7 @@ describe('<CustomerAddress />', () => {
       clearSuggestions: jest.fn()
     })
 
-    const { queryByTestId } = render(<CustomerAddress />)
+    const { queryByTestId } = render(<CustomerAddress onSelectAddress={onSelectAddressMock} />)
 
     const container = queryByTestId('zoe-address-container')
     const input = queryByTestId('zoe-input-container')
@@ -70,7 +71,7 @@ describe('<CustomerAddress />', () => {
       })
 
       test('it should renders a list with terms', async () => {
-        const { queryByTestId, queryAllByText } = render(<CustomerAddress />)
+        const { queryByTestId, queryAllByText } = render(<CustomerAddress onSelectAddress={onSelectAddressMock} />)
 
         const input = queryByTestId('zoe-input') as HTMLInputElement
 
@@ -88,7 +89,7 @@ describe('<CustomerAddress />', () => {
       })
 
       test('it should clear list with suggestions after selected option', async () => {
-        const { queryByTestId, queryAllByText } = render(<CustomerAddress />)
+        const { queryByTestId, queryAllByText } = render(<CustomerAddress onSelectAddress={onSelectAddressMock} />)
 
         const input = queryByTestId('zoe-input') as HTMLInputElement
 
@@ -101,6 +102,11 @@ describe('<CustomerAddress />', () => {
 
           expect(setValueMock).toBeCalled()
           expect(clearSuggestionsMock).toBeCalled()
+          expect(onSelectAddressMock).toBeCalled()
+          expect(onSelectAddressMock).toBeCalledWith(
+            geoCodeResult[0].geometry.location.lat,
+            geoCodeResult[0].geometry.location.lng
+          )
         })
       })
     })
@@ -119,7 +125,7 @@ describe('<CustomerAddress />', () => {
           clearSuggestions: jest.fn()
         })
 
-        const { queryByTestId } = render(<CustomerAddress />)
+        const { queryByTestId } = render(<CustomerAddress onSelectAddress={onSelectAddressMock} />)
 
         const input = queryByTestId('zoe-input') as HTMLInputElement
 

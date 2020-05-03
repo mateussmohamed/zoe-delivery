@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Container = styled.ul.attrs(() => ({
+export const Container = styled.div.attrs(() => ({
   'data-testid': 'zoe-address-container'
 }))`
   position: relative;
@@ -42,5 +42,5 @@ export const MainText = styled.strong.attrs(() => ({
 export const SecondaryText = styled.small.attrs(() => ({
   'data-testid': 'zoe-address-suggestions-secondary'
 }))`
-  // font-size: 12px;
+  font-size: 12px;
 `
