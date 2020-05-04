@@ -6,10 +6,10 @@ import Layout from '~/components/Layout'
 import Loading from '~/components/Loading'
 import Message from '~/components/Message'
 
-import unavailableMessage from '../../../../assets/unavailable-service.svg'
+import unavailableMessage from '../../assets/unavailable-service.svg'
 
-import CustomerAddress from '../../components/CustomerAddress'
-import POC_SEARCH_QUERY, { TPocSearchData, TPocVariables } from '../../graphql/pocSearch'
+import CustomerAddress from './components/CustomerAddress'
+import POC_SEARCH_QUERY, { TPocSearchData, TPocVariables } from './graphql/pocSearch'
 
 import { Container, Button } from './styles'
 

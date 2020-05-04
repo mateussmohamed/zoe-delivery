@@ -2,17 +2,17 @@ import React, { FC } from 'react'
 import { useParams } from 'react-router-dom'
 import { useQuery } from '@apollo/react-hooks'
 
+import { Product, Category } from '~/@types'
 import Layout from '~/components/Layout'
 import Loading from '~/components/Loading'
 
-import ProductList from '../../components/ProductList'
-import Categories from '../../components/Categories'
+import ProductList from './components/ProductList'
+import Categories from './components/Categories'
 
-import ALL_CATEGORIES_QUERY from '../../graphql/allCategories'
-import POC_PRODUCTS_QUERY from '../../graphql/pocProducts'
+import ALL_CATEGORIES_QUERY from './graphql/allCategories'
+import POC_PRODUCTS_QUERY from './graphql/pocProducts'
 
 import { Container } from './styles'
-import { Product, Category } from '~/@types'
 
 type RouteParams = {
   categoryId?: string
