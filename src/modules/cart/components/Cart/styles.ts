@@ -81,7 +81,6 @@ export const ProductTitle = styled.h4`
   font-size: 14px;
   color: #955c7b;
 `
-export const ProductRemove = styled.div``
 export const ProductActions = styled.div`
   display: flex;
   justify-content: space-between;

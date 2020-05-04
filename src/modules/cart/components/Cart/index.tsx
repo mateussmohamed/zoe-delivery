@@ -1,12 +1,12 @@
-import React, { useContext, FC, ReactNode } from 'react'
+import React, { useContext, FC, ReactNode, SyntheticEvent } from 'react'
 
 import { ProductCart } from '~/@types'
 import { ZoeContext } from '~/context'
 import { Types } from '~/context/reducers'
 import Message from '~/components/Message'
 
-import productWithoutImage from '~/assets/product-without-image.png'
-import emptyBag from '~/assets/empty-bag.svg'
+import productWithoutImage from '../../../../assets/product-without-image.png'
+import emptyBag from '../../../../assets/empty-bag.svg'
 
 import {
   Overlay,
@@ -39,8 +39,8 @@ const Cart: FC = () => {
   } = useContext(ZoeContext)
   const hasProducts = products.length > 0
 
-  const fallbackImage = (e): void => {
-    e.currentTarget.onerr = null
+  const fallbackImage = (e: SyntheticEvent<HTMLImageElement>): void => {
+    e.currentTarget.onerror = null
     e.currentTarget.src = productWithoutImage
   }
 

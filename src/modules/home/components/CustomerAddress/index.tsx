@@ -2,9 +2,9 @@ import React, { useRef, FC } from 'react'
 
 import usePlacesAutocomplete, { getGeocode, getLatLng, Suggestion } from 'use-places-autocomplete'
 
-import AddressInput from '~/components/AddressInput'
+// import AddressInput from '~/components/AddressInput'
 
-import { Container, List, Item, MainText, SecondaryText } from './styles'
+import { Container, List, Item, MainText, SecondaryText, InputContainer, InputIcon, Input } from './styles'
 
 type TProps = {
   onSelectAddress: (lat: number, lng: number) => void
@@ -58,12 +58,17 @@ const CustomerAddress: FC<TProps> = ({ onSelectAddress }) => {
 
   return (
     <Container ref={ref}>
-      <AddressInput
-        value={value}
-        onChange={handleInput}
-        disabled={!ready}
-        placeholder="Onde vamos entregar suas bebidas?"
-      />
+      <InputContainer data-testid="zoe-input-container">
+        <InputIcon data-testid="zoe-input-icon" />
+        <Input
+          data-testid="zoe-input"
+          type="text"
+          placeholder="Onde vamos entregar suas bebidas?"
+          onChange={handleInput}
+          value={value}
+          disabled={!ready}
+        />
+      </InputContainer>
 
       {status === 'OK' && <List>{renderSuggestions()}</List>}
     </Container>
