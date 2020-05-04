@@ -1,4 +1,5 @@
 import React, { useContext, FC, ReactNode, SyntheticEvent } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import { ProductBag } from '~/@types'
 import { ZoeContext } from '~/context'
@@ -37,6 +38,7 @@ const Bag: FC = () => {
     },
     dispatch
   } = useContext(ZoeContext)
+  const history = useHistory()
   const hasProducts = products.length > 0
 
   const fallbackImage = (e: SyntheticEvent<HTMLImageElement>): void => {
@@ -57,6 +59,15 @@ const Bag: FC = () => {
 
   const handleAddProduct = (product: ProductBag) => (): void => {
     dispatch({ type: Types.ADD_PRODUCT, payload: product })
+  }
+
+  const handleCheckout = (): void => {
+    dispatch({
+      type: Types.CHECKOUT,
+      payload: true
+    })
+
+    history.replace('/order/success')
   }
 
   const renderProducts = (): ReactNode => {
@@ -104,7 +115,9 @@ const Bag: FC = () => {
               <FooterItemLeft>Total a Pagar</FooterItemLeft>
               <FooterItemRight>R$ {(amountToPay + fixedFreight).toFixed(2)}</FooterItemRight>
             </FooterItem>
-            <CheckoutButton>Finalizar Pedido</CheckoutButton>
+            <CheckoutButton data-testid="zoe-bag-checkout-btn" onClick={handleCheckout}>
+              Finalizar Pedido
+            </CheckoutButton>
           </Footer>
         )}
       </Container>

@@ -118,4 +118,23 @@ describe('<BagReducer />', () => {
       expect(finalState).toMatchObject(expectedState)
     })
   })
+
+  describe('CHECKOUT', () => {
+    test('it should open the Bag if is closed', () => {
+      const initialState = buildSate({
+        products: [
+          { ...pocProducts.data.poc.products[0], amount: 3 },
+          { ...pocProducts.data.poc.products[1], amount: 2 }
+        ]
+      })
+      const finalState = bagReducer(initialState, {
+        payload: true,
+        type: Types.CHECKOUT
+      })
+
+      const expectedState = buildSate()
+
+      expect(finalState).toMatchObject(expectedState)
+    })
+  })
 })

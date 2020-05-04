@@ -6,7 +6,7 @@ import { ThemeProvider } from 'styled-components'
 import { ZoeProvider } from '~/context'
 import client from '~/apollo/client'
 import Routes from '~/routes/Routes'
-import Bag from '~/modules/bag'
+
 import GlobalStyle from '~/styles/global'
 import theme from '~/styles/themes/default'
 
@@ -17,7 +17,6 @@ const App: FC = () => {
       <ApolloProvider client={client}>
         <ZoeProvider>
           <Routes />
-          <Bag />
         </ZoeProvider>
       </ApolloProvider>
     </ThemeProvider>
