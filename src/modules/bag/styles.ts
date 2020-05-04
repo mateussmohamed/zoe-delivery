@@ -19,12 +19,12 @@ export const Container = styled.div`
   bottom: 0;
   width: 350px;
   height: 100vh;
-  background: #fff;
+  background: ${(props): string => props.theme.colors.white};
   z-index: 11;
 `
 
 export const Header = styled.header`
-  background: #434053;
+  background: ${(props): string => props.theme.colors.primary};
   padding: 0 1rem;
   height: 80px;
   display: flex;
@@ -33,15 +33,15 @@ export const Header = styled.header`
 `
 
 export const HeaderTitle = styled.h3`
-  color: #f0efff;
+  color: ${(props): string => props.theme.colors.background};
   flex: 1;
 `
 export const CloseBag = styled.span`
-  color: #fff;
+  color: ${(props): string => props.theme.colors.background};
   width: 1.5rem;
   height: 1.5rem;
   border-radius: 50%;
-  border: 2px solid #fff;
+  border: 2px solid ${(props): string => props.theme.colors.background};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,8 +50,8 @@ export const CloseBag = styled.span`
   transition: 0.2s;
 
   &:hover {
-    color: #955c7b;
-    background-color: #fff;
+    color: ${(props): string => props.theme.colors.secondary};
+    background-color: ${(props): string => props.theme.colors.background};
   }
 `
 
@@ -79,7 +79,7 @@ export const ProductInfo = styled.div`
 `
 export const ProductTitle = styled.h4`
   font-size: 14px;
-  color: #955c7b;
+  color: ${(props): string => props.theme.colors.secondary};
 `
 export const ProductActions = styled.div`
   display: flex;
@@ -90,8 +90,8 @@ export const ProductActions = styled.div`
 `
 
 const ActionButton = styled.button`
-  background-color: #955c7b;
-  color: #fff;
+  background-color: ${(props): string => props.theme.colors.secondary};
+  color: ${(props): string => props.theme.colors.background};
   border-radius: 5px;
   outline: 0;
   border: 0;
@@ -100,7 +100,7 @@ const ActionButton = styled.button`
   font-size: 1.5rem;
 
   &:hover {
-    background-color: #6b3b55;
+    background-color: ${(props): string => props.theme.colors.secondaryDark};
     box-shadow: 1px 1px 9px 5px rgba(66, 64, 83, 0.13);
   }
 `
@@ -126,7 +126,7 @@ export const ProductPrice = styled.span`
 `
 
 export const Footer = styled.footer`
-  background: #fff;
+  background: ${(props): string => props.theme.colors.white};
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -145,13 +145,13 @@ export const FooterItem = styled.div`
 export const FooterItemLeft = styled.span`
   font-size: 16px;
   font-weight: 600;
-  color: #999;
+  color: ${(props): string => props.theme.colors.grey};
 `
 
 export const FooterItemRight = styled.span`
   font-size: 16px;
   font-weight: 800;
-  color: #000;
+  color: ${(props): string => props.theme.colors.dark};
 `
 
 export const CheckoutButton = styled(ActionButton)`

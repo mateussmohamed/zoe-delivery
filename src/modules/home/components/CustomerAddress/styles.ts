@@ -12,7 +12,7 @@ export const List = styled.ul.attrs(() => ({
   'data-testid': 'zoe-address-suggestions'
 }))`
   list-style: none;
-  background: #fff;
+  background: ${(props): string => props.theme.colors.background};
   position: absolute;
   top: 60px;
   width: 100%;
@@ -59,7 +59,7 @@ export const Input = styled.input`
   outline: none;
   border-radius: 5px;
   box-shadow: 1px 1px 5px 3px rgba(66, 64, 83, 0.1);
-  color: ${(props): string => props.theme.colors.header};
+  color: ${(props): string => props.theme.colors.primary};
   padding: 0.625rem 1.25rem 0.625rem 3.75rem;
 
   &:focus {
@@ -67,7 +67,7 @@ export const Input = styled.input`
   }
 
   ::placeholder {
-    color: ${(props): string => props.theme.colors.header};
+    color: ${(props): string => props.theme.colors.primary};
   }
 `
 

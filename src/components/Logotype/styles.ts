@@ -11,7 +11,7 @@ export const Box = styled.div.attrs(() => ({
 export const Title = styled.h1.attrs(() => ({
   'data-testid': 'zoe-logo-title'
 }))`
-  color: #fff;
+  color: ${(props): string => props.theme.colors.background};
   font-weight: 600;
   margin: 0;
 `
@@ -19,7 +19,7 @@ export const Title = styled.h1.attrs(() => ({
 export const Subtitle = styled.h5.attrs(() => ({
   'data-testid': 'zoe-logo-subtitle'
 }))`
-  color: #fff;
+  color: ${(props): string => props.theme.colors.background};
   font-weight: 400;
   margin: 0;
 `

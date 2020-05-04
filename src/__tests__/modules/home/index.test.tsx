@@ -4,7 +4,7 @@ import { ApolloProvider } from '@apollo/react-hooks'
 import { createMockClient, MockApolloClient } from 'mock-apollo-client'
 import { render, fireEvent, waitFor } from 'test-utils'
 
-import Home from '~/modules/home/pages/Home'
+import Home from '~/modules/home'
 import POC_SEARCH_QUERY from '~/modules/home/graphql/pocSearch'
 
 import typeResult from '~/__tests__/__mocks__/typeResult'

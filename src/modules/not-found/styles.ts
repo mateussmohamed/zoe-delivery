@@ -17,6 +17,6 @@ export const Text = styled.p`
 
 export const LinkProduct = styled(Link)`
   font-weight: 800;
-  color: #424053;
+  color: ${(props): string => props.theme.colors.primary};
   text-decoration: none;
 `

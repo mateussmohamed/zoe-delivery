@@ -6,7 +6,7 @@ import { render, fireEvent, waitFor, RenderResult } from 'test-utils'
 import { ZoeContext } from '~/context'
 import allCategories from '~/__tests__/__mocks__/allCategory'
 import pocProducts from '~/__tests__/__mocks__/pocProducts'
-import Products from '~/modules/products/pages/Products'
+import Products from '~/modules/products'
 import POC_PRODUCTS_QUERY from '~/modules/products/graphql/pocProducts'
 import ALL_CATEGORIES_QUERY from '~/modules/products/graphql/allCategories'
 
