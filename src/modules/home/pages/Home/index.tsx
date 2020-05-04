@@ -4,10 +4,12 @@ import { useHistory } from 'react-router-dom'
 
 import Layout from '~/components/Layout'
 import Loading from '~/components/Loading'
+import Message from '~/components/Message'
 
-import CustomerAddress from '~/modules/home/components/CustomerAddress'
-import POC_SEARCH_QUERY, { TPocSearchData, TPocVariables } from '~/modules/home/graphql/pocSearch'
-import UnavailableService from '~/modules/home/components/UnavailableService'
+import unavailableMessage from '../../../../assets/unavailable-service.svg'
+
+import CustomerAddress from '../../components/CustomerAddress'
+import POC_SEARCH_QUERY, { TPocSearchData, TPocVariables } from '../../graphql/pocSearch'
 
 import { Container, Button } from './styles'
 
@@ -41,7 +43,7 @@ const Home: FC = () => {
 
           {availableService && <Button onClick={handleSearchProducts}>Buscar Produtos</Button>}
 
-          {unavailableService && <UnavailableService />}
+          {unavailableService && <Message text="Poxa, ainda não chegamos na sua região" image={unavailableMessage} />}
         </Container>
       </Layout>
       {loading && <Loading />}

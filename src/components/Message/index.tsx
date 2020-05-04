@@ -9,9 +9,9 @@ interface TProps {
 
 const Message: FC<TProps> = ({ image, text }) => {
   return (
-    <Container>
-      <Image src={image} />
-      <Text>{text}</Text>
+    <Container data-testid="zoe-message">
+      <Image src={image} data-testid="zoe-message-image" />
+      <Text data-testid="zoe-message-text">{text}</Text>
     </Container>
   )
 }

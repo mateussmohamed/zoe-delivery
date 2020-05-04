@@ -1,11 +1,12 @@
-import React, { useContext, FC } from 'react'
+import React, { useContext, FC, SyntheticEvent } from 'react'
 
 import { ProductCart } from '~/@types'
 import Message from '~/components/Message'
-import productWithoutImage from '~/assets/product-without-image.png'
-import emptySearch from '~/assets/empty-search.svg'
 import { ZoeContext } from '~/context'
 import { Types } from '~/context/reducers'
+
+import productWithoutImage from '../../../../assets/product-without-image.png'
+import emptySearch from '../../../../assets/empty-search.svg'
 
 import { Cards, Card, ProductTitle, ProductImage, ProductPrice, AddToCartButton } from './style'
 
@@ -20,15 +21,15 @@ const ProductList: FC<TProps> = ({ products }) => {
     dispatch({ type: Types.ADD_PRODUCT, payload: product })
   }
 
-  const fallbackImage = (e): void => {
-    e.currentTarget.onerr = null
+  const fallbackImage = (e: SyntheticEvent<HTMLImageElement>): void => {
+    e.currentTarget.onerror = null
     e.currentTarget.src = productWithoutImage
   }
 
   if (!products) return null
 
   if (products.length === 0) {
-    return <Message image={emptySearch} text="Parece que os produtos que você pesquisou foram abduzidos" />
+    return <Message image={emptySearch} text="Parece que os produtos que você pesquisou foram abduzidos!" />
   }
 
   return (

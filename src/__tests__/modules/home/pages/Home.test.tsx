@@ -11,6 +11,7 @@ import typeResult from '~/__tests__/__mocks__/typeResult'
 import geoCodeResult from '~/__tests__/__mocks__/geoCodeResult'
 
 jest.mock('use-places-autocomplete')
+
 const pushMock = jest.fn()
 jest.mock('react-router-dom', () => ({
   useHistory: () => ({
@@ -104,7 +105,7 @@ describe('<Home />', () => {
     })
 
     describe('when customer type an available address to delivery', () => {
-      test('it should render <UnavailableService /> message', async () => {
+      test('it should render <Message /> message', async () => {
         mockedUsePlacesAutcomplete.getLatLng.mockResolvedValue({
           lat: -99.434343,
           lng: -343.4343
@@ -132,7 +133,7 @@ describe('<Home />', () => {
         fireEvent.click(suggestions[0])
 
         await waitFor(async () => {
-          const unavailable = await findByTestId('zoe-unavailable')
+          const unavailable = await findByTestId('zoe-message')
 
           expect(unavailable).toBeTruthy()
           expect(pocSearchHandler).toBeCalledTimes(1)

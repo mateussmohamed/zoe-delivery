@@ -1,10 +1,10 @@
 import styled from 'styled-components'
-import { size } from 'polished'
 
 export const Container = styled.footer.attrs(() => ({
   'data-testid': 'zoe-footer'
 }))`
-  ${size(80, '100%')};
+  width: 100%;
+  height: 80px;
   background: ${(props): string => props.theme.colors.footer};
   display: flex;
   justify-content: center;

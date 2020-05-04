@@ -1,18 +1,17 @@
 import styled from 'styled-components'
-import { size } from 'polished'
 
-import bagIcon from '~/assets/bag-icon.svg'
-
+import bagIcon from '../../assets/bag-icon.svg'
 export const Container = styled.header.attrs(() => ({
   'data-testid': 'zoe-header'
 }))`
-  ${size(80, '100%')};
+  width: 100%;
+  height: 80px;
   background: ${(props): string => props.theme.colors.header};
   display: flex;
   justify-content: center;
 `
 
-export const LogoContainer = styled.a`
+export const LogoContainer = styled.div`
   display: flex;
   flex: 1;
 `
@@ -24,7 +23,9 @@ export const Inner = styled.div`
   align-items: center;
 `
 
-export const BagButton = styled.button`
+export const BagButton = styled.button.attrs(() => ({
+  'data-testid': 'zoe-bag-button'
+}))`
   width: 32px;
   height: 32px;
   position: relative;
@@ -37,7 +38,9 @@ export const BagButton = styled.button`
   background-position: center center;
 `
 
-export const BagCount = styled.span`
+export const BagCount = styled.span.attrs(() => ({
+  'data-testid': 'zoe-bag-count'
+}))`
   position: absolute;
   top: -15px;
   right: -15px;

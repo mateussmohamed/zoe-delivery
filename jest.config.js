@@ -6,7 +6,7 @@ const { compilerOptions } = require('./tsconfig.json')
 module.exports = {
   preset: 'ts-jest',
 
-  roots: ['<rootDir>/src'],
+  roots: ['<rootDir>'],
 
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$',
 
@@ -17,15 +17,16 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js'],
 
   moduleNameMapper: {
-    '^~/(.*)$': '<rootDir>/src/$1',
     'test-utils': '<rootDir>/utils/test-utils',
-    '\\.(jpg|jpeg|png|gif|svg)$': '<rootDir>/__mocks__/fileMock.ts'
+    '^~/(.*)$': '<rootDir>/src/$1',
+    '\\.(jpg|jpeg|png|gif|svg)$': '<rootDir>/src/__tests__/__mocks__/fileMock.ts'
   },
 
   bail: 1,
 
   collectCoverage: true,
 
+  // collectCoverageFrom: ['src/**/*'],
   collectCoverageFrom: ['src/**/*', '!src/styles/**', '!src/**/styles.ts', '!src/__tests__/**', '!src/@/types'],
 
   coverageDirectory: 'coverage',
