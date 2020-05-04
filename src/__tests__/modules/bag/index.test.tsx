@@ -6,6 +6,14 @@ import pocProducts from '~/__tests__/__mocks__/pocProducts'
 import Bag from '~/modules/bag/'
 
 const mockDispatch = jest.fn()
+const replaceMock = jest.fn()
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useHistory: jest.fn(() => ({
+    replace: replaceMock
+  }))
+}))
 
 const initialState = {
   bag: {
@@ -109,6 +117,35 @@ describe('<Bag />', () => {
           type: 'REMOVE_PRODUCT',
           payload: product
         })
+      })
+    })
+  })
+
+  describe('when customer finished shopping', () => {
+    test('it should should clear bag and redirect to order succes page', async () => {
+      const { findByTestId } = setup({
+        isOpen: true,
+        amountToPay: 2.09,
+        amountItems: 1,
+        products: [
+          { ...pocProducts.data.poc.products[0], amount: 2 },
+          { ...pocProducts.data.poc.products[3], amount: 3 }
+        ]
+      })
+
+      await waitFor(async () => {
+        const checkoutBtn = await findByTestId('zoe-bag-checkout-btn')
+
+        fireEvent.click(checkoutBtn)
+
+        expect(mockDispatch).toBeCalled()
+        expect(mockDispatch).toBeCalledWith({
+          type: 'CHECKOUT',
+          payload: true
+        })
+
+        expect(replaceMock).toBeCalled()
+        expect(replaceMock).toBeCalledWith('/order/success')
       })
     })
   })

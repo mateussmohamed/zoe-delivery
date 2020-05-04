@@ -8,13 +8,17 @@ export const Container = styled.div`
   margin: 3rem;
 `
 
+interface ImageProps {
+  readonly height: number
+}
+
 export const Image = styled.img`
-  height: 150px;
+  height: ${(props): string => (props.height ? `${props.height}px` : '150px')};
 `
 
 export const Text = styled.p`
   margin-top: 1.5rem;
-  font-weight: 300;
-  font-size: 16px;
+  font-weight: 600;
+  font-size: 18px;
   text-align: center;
 `

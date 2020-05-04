@@ -1,5 +1,5 @@
 import { ProductBag } from '~/@types'
-
+import { INITIAL_STATE } from './index'
 type ActionMap<M extends { [index: string]: any }> = {
   [Key in keyof M]: M[Key] extends undefined
     ? {
@@ -14,13 +14,15 @@ type ActionMap<M extends { [index: string]: any }> = {
 export enum Types {
   ADD_PRODUCT = 'ADD_PRODUCT',
   REMOVE_PRODUCT = 'REMOVE_PRODUCT',
-  TOGGLE_BAG = 'TOGGLE_BAG'
+  TOGGLE_BAG = 'TOGGLE_BAG',
+  CHECKOUT = 'CHECKOUT'
 }
 
 type BagPayload = {
   [Types.ADD_PRODUCT]: ProductBag
   [Types.REMOVE_PRODUCT]: ProductBag
   [Types.TOGGLE_BAG]: boolean
+  [Types.CHECKOUT]: boolean
 }
 
 export type BagType = {
@@ -95,6 +97,9 @@ export const bagReducer = (state: BagType, action: BagActions): any => {
     }
     case Types.TOGGLE_BAG: {
       return Object.assign({}, { ...state, isOpen: !state.isOpen })
+    }
+    case Types.CHECKOUT: {
+      return INITIAL_STATE.bag
     }
     default:
       return state

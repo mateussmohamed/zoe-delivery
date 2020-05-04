@@ -2,7 +2,7 @@ import React, { createContext, useReducer, Dispatch, FC } from 'react'
 
 import { bagReducer, BagActions, BagType } from './reducers'
 
-const initialState = {
+export const INITIAL_STATE = {
   bag: {
     isOpen: false,
     products: [],
@@ -20,7 +20,7 @@ const ZoeContext = createContext<{
   state: InitialStateType
   dispatch: Dispatch<BagActions>
 }>({
-  state: initialState,
+  state: INITIAL_STATE,
   dispatch: () => null
 })
 
@@ -29,7 +29,7 @@ const mainReducer = ({ bag }: InitialStateType, action: BagActions): any => ({
 })
 
 const ZoeProvider: FC = ({ children }) => {
-  const [state, dispatch] = useReducer(mainReducer, initialState)
+  const [state, dispatch] = useReducer(mainReducer, INITIAL_STATE)
 
   return <ZoeContext.Provider value={{ state, dispatch }}>{children}</ZoeContext.Provider>
 }
