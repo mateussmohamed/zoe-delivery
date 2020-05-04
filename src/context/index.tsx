@@ -1,15 +1,20 @@
 import React, { createContext, useReducer, Dispatch, FC } from 'react'
 
-import { bagReducer, BagActions } from './reducers'
+import { bagReducer, BagActions, BagType } from './reducers'
 
 const initialState = {
   bag: {
+    isOpen: false,
     products: [],
-    total: 0
+    amountToPay: 0,
+    amountItems: 0,
+    fixedFreight: 6.9
   }
 }
 
-type InitialStateType = typeof initialState
+type InitialStateType = {
+  bag: BagType
+}
 
 const ZoeContext = createContext<{
   state: InitialStateType

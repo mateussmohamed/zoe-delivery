@@ -1,9 +1,3 @@
-declare module '*.png'
-declare module '*.jpg'
-declare module '*.jpeg'
-declare module '*.svg'
-declare module '*.gif'
-
 type Image = {
   url: string
 }
@@ -36,7 +30,7 @@ export type Product = {
 }
 
 type ProductCart = {
-  qty?: number
+  amount?: number
 } & Product
 
 export type Category = {

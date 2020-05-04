@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 
 import { Container, Image, Text } from './styles'
 
-type TProps = {
+interface TProps {
   image: string
   text: string
 }

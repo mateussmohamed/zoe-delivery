@@ -25,5 +25,6 @@
       "test-utils": ["utils/test-utils"]
     }
   },
-  "include": ["src"]
+  "include": ["src"],
+  "files": ["src/@types/global.d.ts", "src/@types/index.d.ts", "src/@types/styled.d.ts"]
 }
