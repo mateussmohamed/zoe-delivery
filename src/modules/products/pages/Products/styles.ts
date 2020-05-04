@@ -8,6 +8,6 @@ export const Container = styled.div.attrs(() => ({
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 1440px;
+  max-width: 1024px;
   margin: 0 auto;
 `

@@ -22,4 +22,5 @@ export const Text = styled.p.attrs(() => ({
   margin-top: 1.5rem;
   font-weight: 300;
   font-size: 16px;
+  text-align: center;
 `

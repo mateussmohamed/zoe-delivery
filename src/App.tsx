@@ -3,11 +3,10 @@ import { hot } from 'react-hot-loader/root'
 import { ApolloProvider } from '@apollo/react-hooks'
 import { ThemeProvider } from 'styled-components'
 
-import client from '~/apollo/client'
-
 import { ZoeProvider } from '~/context'
+import client from '~/apollo/client'
 import Routes from '~/routes/Routes'
-
+import Cart from '~/modules/cart'
 import GlobalStyle from '~/styles/global'
 import theme from '~/styles/themes/default'
 
@@ -18,6 +17,7 @@ const App: FC = () => {
       <ApolloProvider client={client}>
         <ZoeProvider>
           <Routes />
+          <Cart />
         </ZoeProvider>
       </ApolloProvider>
     </ThemeProvider>

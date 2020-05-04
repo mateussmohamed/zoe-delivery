@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Cards = styled.section`
   display: flex;
-  max-width: 1440px;
+  max-width: 1024px;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -19,7 +19,7 @@ export const Card = styled.div`
   background: #fff;
   border-radius: 5px;
   margin-bottom: 2rem;
-  flex: 0 1 calc(20% - 1em);
+  flex: 0 1 calc(25% - 1rem);
   box-shadow: 2px 2px 3px 3px rgba(66, 64, 83, 0.1);
 `
 
