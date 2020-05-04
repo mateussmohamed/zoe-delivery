@@ -1,6 +1,6 @@
 import React, { useContext, FC, SyntheticEvent } from 'react'
 
-import { ProductCart } from '~/@types'
+import { ProductBag } from '~/@types'
 import Message from '~/components/Message'
 import { ZoeContext } from '~/context'
 import { Types } from '~/context/reducers'
@@ -8,16 +8,16 @@ import { Types } from '~/context/reducers'
 import productWithoutImage from '../../../../assets/product-without-image.png'
 import emptySearch from '../../../../assets/empty-search.svg'
 
-import { Cards, Card, ProductTitle, ProductImage, ProductPrice, AddToCartButton } from './style'
+import { Cards, Card, ProductTitle, ProductImage, ProductPrice, AddToBagButton } from './style'
 
 type TProps = {
-  products?: ProductCart[] | undefined
+  products?: ProductBag[] | undefined
 }
 
 const ProductList: FC<TProps> = ({ products }) => {
   const { dispatch } = useContext(ZoeContext)
 
-  const handleAddProduct = (product: ProductCart) => (): void => {
+  const handleAddProduct = (product: ProductBag) => (): void => {
     dispatch({ type: Types.ADD_PRODUCT, payload: product })
   }
 
@@ -33,13 +33,15 @@ const ProductList: FC<TProps> = ({ products }) => {
   }
 
   return (
-    <Cards>
+    <Cards data-testid="zoe-products">
       {products.map((product) => (
-        <Card key={product.id}>
-          <ProductImage src={product.images[0].url} onError={fallbackImage} />
-          <ProductTitle>{product.title}</ProductTitle>
-          <ProductPrice>R${product.productVariants[0].price}</ProductPrice>
-          <AddToCartButton onClick={handleAddProduct(product)}>&nbsp;Adicionar</AddToCartButton>
+        <Card key={product.id} data-testid="zoe-product-item">
+          <ProductImage data-testid="zoe-product-image" src={product.images[0].url} onError={fallbackImage} />
+          <ProductTitle data-testid="zoe-product-title">{product.title}</ProductTitle>
+          <ProductPrice data-testid="zoe-product-price">R${product.productVariants[0].price}</ProductPrice>
+          <AddToBagButton data-testid="zoe-product-btn-add" onClick={handleAddProduct(product)}>
+            &nbsp;Adicionar
+          </AddToBagButton>
         </Card>
       ))}
     </Cards>

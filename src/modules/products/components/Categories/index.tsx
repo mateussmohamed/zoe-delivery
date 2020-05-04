@@ -12,6 +12,7 @@ type TProps = {
 
 const Categories: FC<TProps> = ({ categories, selectedCategory }) => {
   const history = useHistory()
+  const hasFilter = history.location.pathname === '/products'
 
   const handleSelectCategory = (id: string) => (): void => {
     history.push(`/products/category/${id}`)
@@ -26,9 +27,10 @@ const Categories: FC<TProps> = ({ categories, selectedCategory }) => {
   return (
     <Container data-testid="zoe-categories">
       <Button
-        data-testid="zoe-categories-item-btn"
+        data-testid="zoe-categories-item-btn-all"
+        data-isactive={hasFilter}
+        isActive={hasFilter}
         onClick={handleClearFilters()}
-        isActive={history.location.pathname === '/products'}
       >
         Todos
       </Button>

@@ -1,4 +1,4 @@
-import { ProductCart } from '~/@types'
+import { ProductBag } from '~/@types'
 
 type ActionMap<M extends { [index: string]: any }> = {
   [Key in keyof M]: M[Key] extends undefined
@@ -14,17 +14,17 @@ type ActionMap<M extends { [index: string]: any }> = {
 export enum Types {
   ADD_PRODUCT = 'ADD_PRODUCT',
   REMOVE_PRODUCT = 'REMOVE_PRODUCT',
-  OPEN_CART = 'OPEN_CART'
+  TOGGLE_BAG = 'TOGGLE_BAG'
 }
 
 type BagPayload = {
-  [Types.ADD_PRODUCT]: ProductCart
-  [Types.REMOVE_PRODUCT]: ProductCart
-  [Types.OPEN_CART]: boolean
+  [Types.ADD_PRODUCT]: ProductBag
+  [Types.REMOVE_PRODUCT]: ProductBag
+  [Types.TOGGLE_BAG]: boolean
 }
 
 export type BagType = {
-  products: ProductCart[]
+  products: ProductBag[]
   amountToPay: number
   amountItems: number
   fixedFreight: number
@@ -33,22 +33,22 @@ export type BagType = {
 
 export type BagActions = ActionMap<BagPayload>[keyof ActionMap<BagPayload>]
 
-const calcAmountToPay = (products: ProductCart[]): number =>
+const calcAmountToPay = (products: ProductBag[]): number =>
   products.reduce((acc, current) => {
     const amount = current.amount || 1
     return acc + current.productVariants[0].price * amount
   }, 0)
 
-const calcAmountItems = (products: ProductCart[]): number =>
+const calcAmountItems = (products: ProductBag[]): number =>
   products.reduce((acc, current) => {
     const amount = current.amount || 1
     return acc + amount
   }, 0)
 
-const addToCart = (currentProducts: ProductCart[], payload: ProductCart): ProductCart[] => {
-  const isInCart = currentProducts.find((product) => product.id === payload.id)
+const addToBag = (currentProducts: ProductBag[], payload: ProductBag): ProductBag[] => {
+  const isInBag = currentProducts.find((product) => product.id === payload.id)
 
-  if (isInCart) {
+  if (isInBag) {
     return currentProducts.map((product) => {
       if (product.id === payload.id) {
         product.amount = product.amount ? product.amount + 1 : 1
@@ -61,10 +61,10 @@ const addToCart = (currentProducts: ProductCart[], payload: ProductCart): Produc
   return [...currentProducts, { ...payload, amount: 1 }]
 }
 
-const removeToCart = (currentProducts: ProductCart[], payload: ProductCart): ProductCart[] => {
-  const productIsInCart = currentProducts.find((product) => product.id === payload.id)
+const removeToBag = (currentProducts: ProductBag[], payload: ProductBag): ProductBag[] => {
+  const productIsInBag = currentProducts.find((product) => product.id === payload.id)
 
-  if (productIsInCart && productIsInCart.amount === 1) {
+  if (productIsInBag && productIsInBag.amount === 1) {
     return currentProducts.filter((product) => product.id !== payload.id)
   }
 
@@ -80,20 +80,20 @@ const removeToCart = (currentProducts: ProductCart[], payload: ProductCart): Pro
 export const bagReducer = (state: BagType, action: BagActions): any => {
   switch (action.type) {
     case Types.ADD_PRODUCT: {
-      const products = addToCart(state.products, action.payload)
+      const products = addToBag(state.products, action.payload)
       const amountToPay = calcAmountToPay(products)
       const amountItems = calcAmountItems(products)
 
       return Object.assign({}, { ...state, products, amountToPay, amountItems })
     }
     case Types.REMOVE_PRODUCT: {
-      const products = removeToCart(state.products, action.payload)
+      const products = removeToBag(state.products, action.payload)
       const amountToPay = calcAmountToPay(products)
       const amountItems = calcAmountItems(products)
 
       return Object.assign({}, { ...state, products, amountToPay, amountItems })
     }
-    case Types.OPEN_CART: {
+    case Types.TOGGLE_BAG: {
       return Object.assign({}, { ...state, isOpen: !state.isOpen })
     }
     default:
