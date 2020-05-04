@@ -11,9 +11,9 @@ import typeResult from '~/__tests__/__mocks__/typeResult'
 import geoCodeResult from '~/__tests__/__mocks__/geoCodeResult'
 
 jest.mock('use-places-autocomplete')
-
 const pushMock = jest.fn()
 jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
   useHistory: () => ({
     push: pushMock
   })
@@ -104,7 +104,7 @@ describe('<Home />', () => {
       })
     })
 
-    describe('when customer type an available address to delivery', () => {
+    describe('when customer type an unavailable address to delivery', () => {
       test('it should render <Message /> message', async () => {
         mockedUsePlacesAutcomplete.getLatLng.mockResolvedValue({
           lat: -99.434343,
