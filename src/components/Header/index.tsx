@@ -14,7 +14,7 @@ const Header: FC = () => {
 
   const handleToggleBag = (): void => {
     dispatch({
-      type: Types.OPEN_CART,
+      type: Types.TOGGLE_BAG,
       payload: !state.bag.isOpen
     })
   }

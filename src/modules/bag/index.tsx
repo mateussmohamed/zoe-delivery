@@ -1,12 +1,12 @@
 import React, { useContext, FC, ReactNode, SyntheticEvent } from 'react'
 
-import { ProductCart } from '~/@types'
+import { ProductBag } from '~/@types'
 import { ZoeContext } from '~/context'
 import { Types } from '~/context/reducers'
 import Message from '~/components/Message'
 
-import productWithoutImage from '../../../../assets/product-without-image.png'
-import emptyBag from '../../../../assets/empty-bag.svg'
+import productWithoutImage from '../../assets/product-without-image.png'
+import emptyBag from '../../assets/empty-bag.svg'
 
 import {
   Overlay,
@@ -30,7 +30,7 @@ import {
   CheckoutButton
 } from './styles'
 
-const Cart: FC = () => {
+const Bag: FC = () => {
   const {
     state: {
       bag: { products, isOpen, amountItems, amountToPay, fixedFreight }
@@ -46,16 +46,16 @@ const Cart: FC = () => {
 
   const handleToggleBag = (): void => {
     dispatch({
-      type: Types.OPEN_CART,
+      type: Types.TOGGLE_BAG,
       payload: !isOpen
     })
   }
 
-  const handleRemoveProduct = (product: ProductCart) => (): void => {
+  const handleRemoveProduct = (product: ProductBag) => (): void => {
     dispatch({ type: Types.REMOVE_PRODUCT, payload: product })
   }
 
-  const handleAddProduct = (product: ProductCart) => (): void => {
+  const handleAddProduct = (product: ProductBag) => (): void => {
     dispatch({ type: Types.ADD_PRODUCT, payload: product })
   }
 
@@ -67,9 +67,9 @@ const Cart: FC = () => {
           <ProductTitle>{product.title}</ProductTitle>
           <ProductPrice>{product.productVariants[0].price}</ProductPrice>
           <ProductActions>
-            <ProductMinus onClick={handleRemoveProduct(product)} />
-            <ProductPrice>{product.amount}</ProductPrice>
-            <ProductPlus onClick={handleAddProduct(product)} />
+            <ProductMinus data-testid="zoe-bag-product-remove" onClick={handleRemoveProduct(product)} />
+            <ProductPrice data-testid="zoe-bag-product-amount">{product.amount}</ProductPrice>
+            <ProductPlus data-testid="zoe-bag-product-add" onClick={handleAddProduct(product)} />
           </ProductActions>
         </ProductInfo>
       </Product>
@@ -83,7 +83,9 @@ const Cart: FC = () => {
       <Container>
         <Header>
           <HeaderTitle>Sacola</HeaderTitle>
-          <CloseBag onClick={handleToggleBag}>x</CloseBag>
+          <CloseBag data-testid="zoe-bag-toggle-btn" onClick={handleToggleBag}>
+            x
+          </CloseBag>
         </Header>
         <Products>
           {hasProducts ? renderProducts() : <Message image={emptyBag} text="Ops! a sacola está vazia!" />}
@@ -110,4 +112,4 @@ const Cart: FC = () => {
   )
 }
 
-export default Cart
+export default Bag

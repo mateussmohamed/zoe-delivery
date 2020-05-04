@@ -1,14 +1,10 @@
 /* eslint-disable */
-const { pathsToModuleNameMapper } = require('ts-jest/utils')
-
-const { compilerOptions } = require('./tsconfig.json')
-
 module.exports = {
   preset: 'ts-jest',
 
   roots: ['<rootDir>'],
 
-  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$',
+  testRegex: '(/src/__tests__/.*|(\\.|/)(test))\\.tsx?$',
 
   testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/src/__tests__/__mocks__'],
 
@@ -26,8 +22,7 @@ module.exports = {
 
   collectCoverage: true,
 
-  // collectCoverageFrom: ['src/**/*'],
-  collectCoverageFrom: ['src/**/*', '!src/styles/**', '!src/**/styles.ts', '!src/__tests__/**', '!src/@/types'],
+  collectCoverageFrom: ['src/**/*'],
 
   coverageDirectory: 'coverage',
 
@@ -36,7 +31,7 @@ module.exports = {
       branches: 20,
       functions: 20,
       lines: 20,
-      statements: -10
+      statements: 20
     }
   }
 }

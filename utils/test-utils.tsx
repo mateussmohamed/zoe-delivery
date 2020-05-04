@@ -7,6 +7,8 @@ import '@testing-library/jest-dom'
 
 import theme from '../src/styles/themes/default'
 
+console.error = jest.fn()
+
 const AllTheProviders: FC = ({ children }) => {
   const history = createMemoryHistory()
 

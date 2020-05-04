@@ -42,7 +42,7 @@ export const ProductPrice = styled.p`
   margin-top: 0.5rem;
 `
 
-export const AddToCartButton = styled.button`
+export const AddToBagButton = styled.button`
   width: 100%;
   height: auto;
   padding: 0.5rem;
