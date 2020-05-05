@@ -3,5 +3,5 @@ import fetch from 'isomorphic-unfetch'
 
 export default new ApolloClient({
   fetch,
-  uri: 'https://api.code-challenge.ze.delivery/public/graphql'
+  uri: process.env.ZE_DELIVERY_PUBLIC_API
 })

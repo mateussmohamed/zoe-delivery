@@ -1,4 +1,7 @@
 /* eslint-disable */
+require('dotenv').config()
+const Dotenv = require('dotenv-webpack')
+
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
@@ -59,8 +62,10 @@ const config = {
     historyApiFallback: true
   },
   plugins: [
+    new Dotenv(),
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: './src/index.html',
+      GOOGLE_MAPS_API_KEY: process.env.GOOGLE_MAPS_API_KEY
     }),
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
