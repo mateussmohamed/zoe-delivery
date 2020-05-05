@@ -14,8 +14,8 @@ export const Container = styled.div.attrs(() => ({
 export const Button = styled.button.attrs(() => ({
   'data-testid': 'zoe-button-search-products'
 }))`
-  background-color: #955c7b;
-  color: #fff;
+  background-color: ${(props): string => props.theme.colors.secondary};
+  color: ${(props): string => props.theme.colors.background};
   width: 20rem;
   padding: 1rem;
   margin: 2rem 0;
@@ -28,7 +28,7 @@ export const Button = styled.button.attrs(() => ({
   box-shadow: 1px 1px 5px 3px rgba(66, 64, 83, 0.1);
 
   &:hover {
-    background-color: #6b3b55;
+    background-color: ${(props): string => props.theme.colors.secondaryDark};
     box-shadow: 1px 1px 9px 5px rgba(66, 64, 83, 0.13);
   }
 `

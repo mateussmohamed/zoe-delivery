@@ -27,7 +27,7 @@ export const Spinner = styled.div`
   border-top: 0.225rem solid rgba(149, 92, 123, 0.2);
   border-right: 0.225rem solid rgba(149, 92, 123, 0.2);
   border-bottom: 0.225rem solid rgba(149, 92, 123, 0.2);
-  border-left: 0.225rem solid #955c7b;
+  border-left: 0.225rem solid ${(props): string => props.theme.colors.secondary};
   transform: translateZ(0);
   animation: ${load} 1s infinite linear;
 

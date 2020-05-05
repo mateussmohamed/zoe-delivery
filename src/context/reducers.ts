@@ -1,5 +1,23 @@
-import { ProductBag } from '~/@types'
-import { INITIAL_STATE } from './index'
+import { ProductBag, Address, BagState, CustomerState } from '~/@types'
+
+export const INITIAL_STATE = {
+  customer: {
+    availablePocId: '',
+    address: {
+      lat: 0,
+      long: 0,
+      description: ''
+    }
+  },
+  bag: {
+    isOpen: false,
+    products: [],
+    amountToPay: 0,
+    amountItems: 0,
+    fixedFreight: 6.9
+  }
+}
+
 type ActionMap<M extends { [index: string]: any }> = {
   [Key in keyof M]: M[Key] extends undefined
     ? {
@@ -12,28 +30,37 @@ type ActionMap<M extends { [index: string]: any }> = {
 }
 
 export enum Types {
+  UPDATE_ADDRESS = 'UPDATE_ADDRESS',
   ADD_PRODUCT = 'ADD_PRODUCT',
   REMOVE_PRODUCT = 'REMOVE_PRODUCT',
   TOGGLE_BAG = 'TOGGLE_BAG',
   CHECKOUT = 'CHECKOUT'
 }
 
-type BagPayload = {
+type Payload = {
+  [Types.UPDATE_ADDRESS]: CustomerState
   [Types.ADD_PRODUCT]: ProductBag
   [Types.REMOVE_PRODUCT]: ProductBag
   [Types.TOGGLE_BAG]: boolean
   [Types.CHECKOUT]: boolean
 }
 
-export type BagType = {
-  products: ProductBag[]
-  amountToPay: number
-  amountItems: number
-  fixedFreight: number
-  isOpen: boolean
+export type InitialStateType = {
+  bag: BagState
+  customer: CustomerState
 }
 
-export type BagActions = ActionMap<BagPayload>[keyof ActionMap<BagPayload>]
+export type ZoeActions = ActionMap<Payload>[keyof ActionMap<Payload>]
+
+export const customerReducer = (state: CustomerState, action: ZoeActions): any => {
+  switch (action.type) {
+    case Types.UPDATE_ADDRESS: {
+      return { ...state, ...action.payload }
+    }
+    default:
+      return state
+  }
+}
 
 const calcAmountToPay = (products: ProductBag[]): number =>
   products.reduce((acc, current) => {
@@ -79,7 +106,7 @@ const removeToBag = (currentProducts: ProductBag[], payload: ProductBag): Produc
   })
 }
 
-export const bagReducer = (state: BagType, action: BagActions): any => {
+export const bagReducer = (state: BagState, action: ZoeActions): any => {
   switch (action.type) {
     case Types.ADD_PRODUCT: {
       const products = addToBag(state.products, action.payload)

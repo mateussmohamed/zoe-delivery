@@ -16,6 +16,14 @@ jest.mock('react-router-dom', () => ({
 }))
 
 const initialState = {
+  customer: {
+    address: {
+      lat: 0,
+      long: 0,
+      description: ''
+    },
+    availablePocId: ''
+  },
   bag: {
     isOpen: false,
     products: [],
@@ -25,11 +33,11 @@ const initialState = {
   }
 }
 
-function setup(state: any): RenderResult {
+function setup(overrideState: any): RenderResult {
   return render(
     <ZoeContext.Provider
       value={{
-        state: { bag: { ...initialState.bag, ...state } },
+        state: { ...initialState, bag: { ...initialState.bag, ...overrideState } },
         dispatch: mockDispatch
       }}
     >

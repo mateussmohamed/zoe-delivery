@@ -7,29 +7,41 @@ import { Types } from '~/context/reducers'
 import Logo from '../Logo'
 import Logotype from '../Logotype'
 
-import { Container, Inner, LogoContainer, BagButton, BagCount } from './styles'
+import { Container, Inner, InnerContainer, BagButton, BagCount, DeliverOn, DeliverOnText } from './styles'
 
 const Header: FC = () => {
-  const { state, dispatch } = useContext(ZoeContext)
+  const {
+    state: { bag, customer },
+    dispatch
+  } = useContext(ZoeContext)
 
   const handleToggleBag = (): void => {
     dispatch({
       type: Types.TOGGLE_BAG,
-      payload: !state.bag.isOpen
+      payload: !bag.isOpen
     })
   }
 
   return (
     <Container>
       <Inner>
-        <LogoContainer>
+        <InnerContainer>
           <Link to="/">
             <Logo />
           </Link>
           <Logotype />
-        </LogoContainer>
+          {customer.address.description && (
+            <DeliverOn>
+              <DeliverOnText>
+                Entregar em
+                <br />
+                {customer.address.description}
+              </DeliverOnText>
+            </DeliverOn>
+          )}
+        </InnerContainer>
         <BagButton onClick={handleToggleBag}>
-          <BagCount>{state.bag.amountItems}</BagCount>
+          <BagCount>{bag.amountItems}</BagCount>
         </BagButton>
       </Inner>
     </Container>

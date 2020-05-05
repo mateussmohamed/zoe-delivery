@@ -16,7 +16,7 @@ export const Card = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   padding: 1rem;
-  background: #fff;
+  background: ${(props): string => props.theme.colors.white};
   border-radius: 5px;
   margin-bottom: 2rem;
   flex: 0 1 calc(25% - 1rem);
@@ -33,7 +33,7 @@ export const ProductImage = styled.img`
 
 export const ProductTitle = styled.h3`
   font-size: 14px;
-  color: #955c7b;
+  color: ${(props): string => props.theme.colors.secondary};
 `
 
 export const ProductPrice = styled.p`
@@ -46,8 +46,8 @@ export const AddToBagButton = styled.button`
   width: 100%;
   height: auto;
   padding: 0.5rem;
-  background-color: #955c7b;
-  color: #fff;
+  background-color: ${(props): string => props.theme.colors.secondary};
+  color: ${(props): string => props.theme.colors.background};
   border-radius: 5px;
   outline: 0;
   border: 0;
@@ -58,7 +58,7 @@ export const AddToBagButton = styled.button`
   margin-top: 0.5rem;
 
   &:hover {
-    background-color: #6b3b55;
+    background-color: ${(props): string => props.theme.colors.secondaryDark};
     box-shadow: 1px 1px 9px 5px rgba(66, 64, 83, 0.13);
   }
 
@@ -68,7 +68,7 @@ export const AddToBagButton = styled.button`
     height: 1.4rem;
     margin-right: 0.2rem;
     border-radius: 50%;
-    border: 1px solid #fff;
+    border: 1px solid ${(props): string => props.theme.colors.background};
     display: inline-flex;
     align-items: center;
     justify-content: center;

@@ -2,12 +2,10 @@ import React, { useRef, FC } from 'react'
 
 import usePlacesAutocomplete, { getGeocode, getLatLng, Suggestion } from 'use-places-autocomplete'
 
-// import AddressInput from '~/components/AddressInput'
-
 import { Container, List, Item, MainText, SecondaryText, InputContainer, InputIcon, Input } from './styles'
 
 type TProps = {
-  onSelectAddress: (lat: number, lng: number) => void
+  onSelectAddress: (lat: number, lng: number, address: string) => void
 }
 
 const CustomerAddress: FC<TProps> = ({ onSelectAddress }) => {
@@ -36,7 +34,7 @@ const CustomerAddress: FC<TProps> = ({ onSelectAddress }) => {
       const results = await getGeocode({ address: description })
       const coordinates = await getLatLng(results[0])
 
-      onSelectAddress(coordinates.lat, coordinates.lng)
+      onSelectAddress(coordinates.lat, coordinates.lng, description)
     } catch (error) {}
   }
 

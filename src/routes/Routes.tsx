@@ -2,11 +2,10 @@ import React, { FC } from 'react'
 
 import { HashRouter, Switch, Route } from 'react-router-dom'
 
-import Home from '../modules/home/pages/Home'
-import Products from '../modules/products/pages/Products'
-import OrderSuccess from '../modules/order-success'
-import NotFound from '../modules/not-found/'
-
+import Home from '~/modules/home'
+import Products from '~/modules/products'
+import OrderSuccess from '~/modules/order-success'
+import NotFound from '~/modules/not-found'
 import Bag from '~/modules/bag'
 
 const Routes: FC = () => {

@@ -6,12 +6,12 @@ export const Container = styled.header.attrs(() => ({
 }))`
   width: 100%;
   height: 80px;
-  background: ${(props): string => props.theme.colors.header};
+  background: ${(props): string => props.theme.colors.primary};
   display: flex;
   justify-content: center;
 `
 
-export const LogoContainer = styled.div`
+export const InnerContainer = styled.div`
   display: flex;
   flex: 1;
 `
@@ -50,9 +50,25 @@ export const BagCount = styled.span.attrs(() => ({
   border-radius: 50%;
   font-size: 12px;
   font-weight: 800;
-  color: #f0efff;
-  background-color: #945b7b;
+  color: ${(props): string => props.theme.colors.background};
+  background-color: ${(props): string => props.theme.colors.secondary};
   display: flex;
   justify-content: center;
   align-items: center;
+`
+
+export const DeliverOn = styled.div`
+  display: flex;
+  flex: 1;
+  align-items: center;
+`
+
+export const DeliverOnText = styled.p`
+  color: ${(props): string => props.theme.colors.background};
+  font-size: 12px;
+  font-weight: 800;
+  width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `

@@ -21,3 +21,22 @@ export type Category = {
   title: string
   id: string
 }
+
+export type Address = {
+  lat: number
+  long: number
+  description: string
+}
+
+export type BagState = {
+  products: ProductBag[]
+  amountToPay: number
+  amountItems: number
+  fixedFreight: number
+  isOpen: boolean
+}
+
+export type CustomerState = {
+  address: Address
+  availablePocId: string
+}

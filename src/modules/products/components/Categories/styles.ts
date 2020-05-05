@@ -19,12 +19,12 @@ export const Button = styled.button<ButtonProps>`
   border: 0;
   cursor: pointer;
   transition: 0.2s;
-  border: 1px solid #955c7b;
-  color: ${(props): string => (props.isActive ? '#f0f0ff' : '#955c7b')};
-  background-color: ${(props): string => (props.isActive ? '#955c7b' : 'transparent')};
+  border: 1px solid ${(props): string => props.theme.colors.secondary};
+  color: ${(props): string => (props.isActive ? props.theme.colors.background : props.theme.colors.secondary)};
+  background-color: ${(props): string => (props.isActive ? props.theme.colors.secondary : 'transparent')};
 
   :hover {
-    color: #fff;
-    background-color: #955c7b;
+    color: ${(props): string => props.theme.colors.background};
+    background-color: ${(props): string => props.theme.colors.secondary};
   }
 `
