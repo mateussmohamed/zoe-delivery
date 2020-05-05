@@ -34,6 +34,14 @@ type Overrides = {
 
 const mockDispatch = jest.fn()
 const mockState = {
+  customer: {
+    address: {
+      lat: 0,
+      long: 0,
+      description: ''
+    },
+    availablePocId: ''
+  },
   bag: {
     isOpen: false,
     products: [],

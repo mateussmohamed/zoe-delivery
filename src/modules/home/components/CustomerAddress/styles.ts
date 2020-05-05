@@ -12,12 +12,13 @@ export const List = styled.ul.attrs(() => ({
   'data-testid': 'zoe-address-suggestions'
 }))`
   list-style: none;
-  background: ${(props): string => props.theme.colors.background};
+  background: ${(props): string => props.theme.colors.white};
   position: absolute;
   top: 60px;
   width: 100%;
   z-index: 1;
   box-shadow: 1px 1px 5px 3px rgba(66, 64, 83, 0.1);
+  border-radius: 0 0 5px 5px;
 `
 
 export const Item = styled.li.attrs(() => ({

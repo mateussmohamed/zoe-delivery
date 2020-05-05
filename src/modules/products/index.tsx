@@ -1,8 +1,10 @@
-import React, { FC } from 'react'
+import React, { useContext, FC } from 'react'
 import { useParams } from 'react-router-dom'
 import { useQuery } from '@apollo/react-hooks'
 
 import { Product, Category } from '~/@types'
+import { ZoeContext } from '~/context'
+
 import Layout from '~/components/Layout'
 import Loading from '~/components/Loading'
 
@@ -32,12 +34,14 @@ type ProductsData = {
 }
 
 const Products: FC = () => {
+  const {
+    state: { customer }
+  } = useContext(ZoeContext)
   const { categoryId } = useParams<RouteParams>()
   const { loading: loadingCategories, data: dataCategories } = useQuery<CategoriesData>(ALL_CATEGORIES_QUERY)
   const { loading: loadingProducts, data: dataProducts } = useQuery<ProductsData>(POC_PRODUCTS_QUERY, {
     variables: {
-      id: '532',
-      search: '',
+      id: customer.availablePocId,
       categoryId: categoryId
     }
   })
@@ -47,7 +51,6 @@ const Products: FC = () => {
       <Layout>
         <Container>
           <Categories categories={dataCategories?.allCategory} selectedCategory={categoryId} />
-
           <ProductList products={dataProducts?.poc.products} />
         </Container>
       </Layout>

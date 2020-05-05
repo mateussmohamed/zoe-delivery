@@ -11,7 +11,7 @@ export const Container = styled.header.attrs(() => ({
   justify-content: center;
 `
 
-export const LogoContainer = styled.div`
+export const InnerContainer = styled.div`
   display: flex;
   flex: 1;
 `
@@ -55,4 +55,20 @@ export const BagCount = styled.span.attrs(() => ({
   display: flex;
   justify-content: center;
   align-items: center;
+`
+
+export const DeliverOn = styled.div`
+  display: flex;
+  flex: 1;
+  align-items: center;
+`
+
+export const DeliverOnText = styled.p`
+  color: ${(props): string => props.theme.colors.background};
+  font-size: 12px;
+  font-weight: 800;
+  width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `

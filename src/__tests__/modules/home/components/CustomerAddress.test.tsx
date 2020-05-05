@@ -105,7 +105,8 @@ describe('<CustomerAddress />', () => {
           expect(onSelectAddressMock).toBeCalled()
           expect(onSelectAddressMock).toBeCalledWith(
             geoCodeResult[0].geometry.location.lat,
-            geoCodeResult[0].geometry.location.lng
+            geoCodeResult[0].geometry.location.lng,
+            typeResult.data[0].description
           )
         })
       })
